@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: testRunner.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.771 s <<< FAILURE! - in testRunner.TestRunner
+Desplegar el menu(Validar el menu)  Time elapsed: 0.022 s  <<< ERROR!
+java.lang.NullPointerException
+

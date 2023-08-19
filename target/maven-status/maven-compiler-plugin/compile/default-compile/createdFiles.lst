@@ -1,0 +1,8 @@
+browserFactory\browser.class
+POM\pages\BasePage.class
+POM\selectors\zazzle\locatorsHome.class
+utility\helper.class
+hooks\hooks.class
+POM\pages\zazzle\homeServicesPage.class
+POM\pages\mercadolibre\HomeServicePage.class
+POM\selectors\mercadolibre\home.class
