@@ -46,6 +46,7 @@ public class CartPageService extends BasePage {
         click(btnPlaceOrder);
     }
 
+    /*Valida que el btn Place orden se encuentra presente*/
     public void elementPresentProduct() throws Exception {
         elementPrecence(btnPlaceOrder);
     }
@@ -55,6 +56,7 @@ public class CartPageService extends BasePage {
 
     }
 
+    /*Mediante este metodo completamos el formulario para completar la orden*/
     public void completeFormPlaceOrder(String string, String string2, String string3, String int1, String int2, String int3){
 
         typeText(nameInputLocator, string);
@@ -70,6 +72,7 @@ public class CartPageService extends BasePage {
     }
 
 
+    /*Valida que la tarjeta ingresada coincida con el output del popup*/
     public static void validateCardPopUp(String card) throws Exception {
         elementPrecence(popUpLocator);
         if(getText(popUpLocator).contains(card)){
@@ -77,6 +80,7 @@ public class CartPageService extends BasePage {
         }
     }
 
+    /*Elimina los articulos cargados en el carro de compras*/
     public void clearTableProducts(){
         deleteElmentList(deleteOrderBtn);
     }

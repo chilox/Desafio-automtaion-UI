@@ -15,10 +15,12 @@ public class HomePageService extends BasePage {
         BasePage.setDriver(driver);
     }
 
+    /*Valida la presencia del elemento categoria*/
     public void waitElementHome() throws Exception {
         elementPrecence(categPhonesLoc);
     }
 
+    /*Metodo que realiza el inicio de sesion*/
     public void signIn(String user, String pass) throws Exception {
 
         click(logInLoc);
@@ -29,6 +31,7 @@ public class HomePageService extends BasePage {
 
     }
 
+    /*Valida que estamos en la home mediante el endpoint*/
     public static void validateHome(String url) throws Exception {
         wait(2);
         //elementPrecence(logoHomeLoc);
@@ -36,6 +39,7 @@ public class HomePageService extends BasePage {
 
     }
 
+    /*Validamos por medio del usuario que se muestra en la home que se inicio sesion correctamente*/
     public void validarInicioSesion() throws Exception {
         try {
             elementPrecence(nameUserLoc);
@@ -44,6 +48,7 @@ public class HomePageService extends BasePage {
         }
     }
 
+    /*Selecciona la categoria según el valor que se pasa por parametro*/
     public static void selectCategorie(String categ){
 
         switch (categ.toUpperCase()){
@@ -61,6 +66,7 @@ public class HomePageService extends BasePage {
         }
     }
 
+    /*Recorre una lista de elemento que almacena todos los productos de una marca y selecciona la primera coincidencia*/
     public void selectProduct(String prod) throws Exception {
         try {
             wait(1);
@@ -75,6 +81,7 @@ public class HomePageService extends BasePage {
         }
     }
 
+    /*Navega a la sección car*/
     public void navigateCart(){
         click(cartBtnLoc);
     }
