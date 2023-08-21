@@ -2,13 +2,13 @@ Feature: Flujo de compra
   Vamos a estar validando el flujo de la compra de articulos y todos los componentes que integran el mismo
 
 
-  Background: Inicio de sesion
+  Background: Inicio de sessión
     Given validamos que nos encontramos en la home "index"
     When Iniciamos sesión con el usuario 'user18test' y pass 'Testing1'
     Then Validamos que se inicio sessión correctamente
 
 
-  @browser
+  @browser @regresion
   Scenario Outline: Agregar articulos de varias categorías
     Given Seleccionamos la categoria '<Categoria>'
     Then Agregamos el articulo al carro de compras '<Articulo>'
@@ -20,7 +20,7 @@ Feature: Flujo de compra
     | Laptops   | Macbook Pro   |
     | Monitors  | Apple monitor |
 
-  @browser
+  @browser @regresion
   Scenario Outline: Validar la actualización del carro de compras
     Given Validar que el carro de compras se encuentre vacío
     When Navegamos hacia la home
@@ -38,7 +38,6 @@ Feature: Flujo de compra
     Given Seleccionamos la categoria '<Category>'
     When Agregamos el articulo al carro '<Articulo>'
     And Validamos que estamos en la sección de producto '<url>'
-    ##And Agregamos el articulo al carro de compras##
     When Navegamos al carro de compras
     And Validamos que se actualiza el carro
     And Realizar pedido
