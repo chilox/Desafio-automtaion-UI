@@ -11,6 +11,7 @@ import java.time.Duration;
 public class browser {
     static WebDriver driver = null;
 
+    /*Metodo con el cual se selecciona el browser*/
     public static WebDriver inicializarNavegador(String browser){
         switch (browser){
             case "CHROME":

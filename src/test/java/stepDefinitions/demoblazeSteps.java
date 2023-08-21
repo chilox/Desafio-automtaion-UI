@@ -8,7 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.support.PageFactory;
 
-public class homeSteps {
+public class demoblazeSteps {
     HomePageService homePageService = PageFactory.initElements(browser.getDriver(), HomePageService.class);
     CartPageService cartPageService = PageFactory.initElements(browser.getDriver(), CartPageService.class);
 
@@ -32,6 +32,7 @@ public class homeSteps {
         System.out.println(string);
         homePageService.waitElementHome();
         homePageService.categoryIsPresent();
+        homePageService.wait(2);
         homePageService.selectCategorie(string);
 
     }
@@ -43,18 +44,30 @@ public class homeSteps {
         cartPageService.clearTableProducts();
 
     }
+
+    @When("Agregamos el articulo al carro {string}")
+    public void agregamos_el_articulo_al_carro(String string) throws Exception {
+        System.out.println(string);
+        homePageService.selectProduct(string);
+        homePageService.navigateCart();
+
+    }
+
     @When("Validamos que estamos en la sección de producto {string}")
     public void validamos_que_estamos_en_la_sección_de_producto(String url) throws Exception {
         homePageService.validarUrl(url);
     }
 
     @When("Navegamos al carro de compras")
-    public void navegamos_al_carro_de_compras() {
+    public void navegamos_al_carro_de_compras() throws InterruptedException {
+        homePageService.wait(3);
         homePageService.navigateCart();
     }
 
     @When("Validamos que se actualiza el carro")
-    public void validamos_que_se_actualiza_el_carro() {
+    public void validamos_que_se_actualiza_el_carro() throws Exception {
+        cartPageService.updateCart();
+        homePageService.wait(1);
         cartPageService.validateProductCart();
     }
 
@@ -65,11 +78,12 @@ public class homeSteps {
 
     @When("Validar la apertura del formulario de datos")
     public void validar_la_apertura_del_formulario_de_datos() throws Exception {
-        homePageService.wait(1);
+        //homePageService.wait(1);
         cartPageService.validateModalPlace();
     }
     @When("Ingresar nombre {string}, Country {string}, Ciudad {string}, Card {string}, Mes {string}, Año {string}")
-    public void ingresar_nombre_country_ciudad_card_mes_año(String string, String string2, String string3, String int1, String int2, String int3) {
+    public void ingresar_nombre_country_ciudad_card_mes_año(String string, String string2, String string3, String int1, String int2, String int3) throws InterruptedException {
+        //homePageService.wait(3);
         cartPageService.completeFormPlaceOrder(string, string2, string3, int1, int2, int3);
     }
     @Then("Completar la compra")
@@ -80,6 +94,7 @@ public class homeSteps {
     @Then("Validar que la tarjeta de credito sea correcta {string}")
     public void validar_que_la_tarjeta_de_credito_sea_correcta_credir_card(String card) throws Exception {
         homePageService.wait(1);
+
         try {
             cartPageService.validateCardPopUp(card);
             System.out.println("Las tarjetas coinciden");

@@ -33,7 +33,7 @@ public class BasePage {
         jse.executeScript("arguments[0].scrollIntoView();", driver.findElement(element));
     }
 
-    public static void elementPrecence(By locator) throws Exception {
+    public static void elementPresence(By locator) throws Exception {
         //By element = driver.findElement(locator);
         try{
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -81,9 +81,7 @@ public class BasePage {
     public static int sizeList(By locator) {
             List<WebElement> list = driver.findElements(locator);
 
-            //System.out.println(list.size());
             int size = list.size();
-            //System.out.println("Tamaño de size " + list);
             return size;
     }
 
@@ -94,7 +92,7 @@ public class BasePage {
         for (int i = 0; i <list.size() ; i++) {
             WebElement lista = list.get(i);
             if (lista.getText().toUpperCase().contains(text.toUpperCase())){
-                System.out.println("Metodo listaElemento " + lista.getText());
+                System.out.println("Elemento seleccionado: " + lista.getText());
                 lista.click();
                 break;
             }else{

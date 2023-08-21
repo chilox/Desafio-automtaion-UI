@@ -15,6 +15,10 @@ import java.util.Locale;
 public class hooks {
      WebDriver driver;
 
+     /*
+     Método que instancia el navegador seleccionado
+     El Tag @browser indica que todos los scenarios que posean este instanciará el navegador
+     */
     @Before("@browser")
     public void setup(){
         driver = browser.inicializarNavegador(("chrome").toUpperCase());

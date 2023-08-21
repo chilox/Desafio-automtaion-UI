@@ -8,7 +8,7 @@ Feature: Flujo de compra
     Then Validamos que se inicio sessión correctamente
 
 
-  @browser @regresion
+  @browser
   Scenario Outline: Agregar articulos de varias categorías
     Given Seleccionamos la categoria '<Categoria>'
     Then Agregamos el articulo al carro de compras '<Articulo>'
@@ -20,7 +20,7 @@ Feature: Flujo de compra
     | Laptops   | Macbook Pro   |
     | Monitors  | Apple monitor |
 
-  @browser @regresion
+  @browser
   Scenario Outline: Validar la actualización del carro de compras
     Given Validar que el carro de compras se encuentre vacío
     When Navegamos hacia la home
@@ -33,10 +33,10 @@ Feature: Flujo de compra
       | Laptops   | Macbook Pro   |
       | Monitors  | Apple monitor |
 
-  @browser
+  @browser @regresion
   Scenario Outline: Flujo Checkout con visualización del número de tarjeta
     Given Seleccionamos la categoria '<Category>'
-    When Agregamos el articulo al carro de compras '<Articulo>'
+    When Agregamos el articulo al carro '<Articulo>'
     And Validamos que estamos en la sección de producto '<url>'
     ##And Agregamos el articulo al carro de compras##
     When Navegamos al carro de compras

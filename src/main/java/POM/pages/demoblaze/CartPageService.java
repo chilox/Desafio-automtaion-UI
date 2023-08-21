@@ -4,6 +4,8 @@ import POM.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 
 
+import java.util.Arrays;
+
 import static POM.selectors.demoblaze.cartLocators.*;
 import static POM.selectors.demoblaze.homeLocators.*;
 
@@ -21,7 +23,7 @@ public class CartPageService extends BasePage {
     public static void updateCart() throws Exception {
         try {
            productos = sizeList(elementProdLoc);
-            System.out.println("Tienes " + productos + " artículos en el carro");
+            //System.out.println("Tienes " + productos + " artículos en el carro");
 
         }catch (Exception e){
             throw new Exception("El carro se encuentra vacío");
@@ -48,11 +50,11 @@ public class CartPageService extends BasePage {
 
     /*Valida que el btn Place orden se encuentra presente*/
     public void elementPresentProduct() throws Exception {
-        elementPrecence(btnPlaceOrder);
+        elementPresence(btnPlaceOrder);
     }
 
     public void validateModalPlace() throws Exception {
-     elementPrecence(modalPlaceOrderLoc);
+     elementPresence(modalPlaceOrderLoc);
 
     }
 
@@ -74,9 +76,30 @@ public class CartPageService extends BasePage {
 
     /*Valida que la tarjeta ingresada coincida con el output del popup*/
     public static void validateCardPopUp(String card) throws Exception {
-        elementPrecence(popUpLocator);
-        if(getText(popUpLocator).contains(card)){
-            System.out.println("Validación correcta");
+        // Verificar la presencia del pop-up
+        elementPresence(popUpLocator); // Supongo que esta función verifica si el pop-up está presente
+
+        String texto = getText(popUpLocator);
+
+        // Dividir el texto del pop-up en palabras usando el espacio como separador
+        String[] arrayText = texto.split(" ");
+
+        boolean cardFound = false;
+
+        try {
+            for (String element : arrayText) {
+                if (element.contains(card)) {
+                    String cardNumber = element.replace("Name:", "").trim();
+                        System.out.println("La tarjeta ingresada: " + cardNumber + " Coincide con: " + card);
+                        cardFound = true;
+                }
+            }
+
+            if (!cardFound) {
+                throw new Exception("Las tarjetas no coincide con el pop-up.");
+            }
+        } catch (Exception e) {
+            throw new Exception("Error en la validación del pop-up: " + e.getMessage());
         }
     }
 

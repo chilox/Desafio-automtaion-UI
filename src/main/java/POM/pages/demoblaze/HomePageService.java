@@ -17,7 +17,7 @@ public class HomePageService extends BasePage {
 
     /*Valida la presencia del elemento categoria*/
     public void waitElementHome() throws Exception {
-        elementPrecence(categPhonesLoc);
+        elementPresence(categPhonesLoc);
     }
 
     /*Metodo que realiza el inicio de sesion*/
@@ -42,7 +42,7 @@ public class HomePageService extends BasePage {
     /*Validamos por medio del usuario que se muestra en la home que se inicio sesion correctamente*/
     public void validarInicioSesion() throws Exception {
         try {
-            elementPrecence(nameUserLoc);
+            elementPresence(nameUserLoc);
         }catch (Exception e){
             throw new Exception("Debe iniciar sesión");
         }
@@ -87,7 +87,7 @@ public class HomePageService extends BasePage {
     }
 
     public void categoryIsPresent( ) throws Exception {
-        elementPrecence(categorLocator);
+        elementPresence(categorLocator);
     }
 
 
